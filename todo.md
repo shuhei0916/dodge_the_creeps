@@ -1,0 +1,2 @@
+- [ ] preloadについて学ぶ
+- [ ] test_player.gdを書く
