@@ -1,2 +1,2 @@
-- [ ] preloadについて学ぶ
-- [ ] test_player.gdを書く
+- [ ] add_child()について学ぶ
+- [ ] 
