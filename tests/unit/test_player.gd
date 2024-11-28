@@ -50,7 +50,6 @@ class TestPlayerMoves :
 	#func test_player_moves_diagonally():
 		#pass
 
-
 	func after_each():
 		# 終了処理
 		#_player.queue_free()
@@ -58,3 +57,22 @@ class TestPlayerMoves :
 			_player.queue_free()
 		#await(get_tree(), "idle_frame")  # 削除完了を待機
 		await get_tree().process_frame  # 削除完了を待機
+
+
+class TestPlayerHit:
+	extends GutTest
+	
+	var _player
+	
+	func before_each():
+		# 準備 Arrange
+		# var player = preload("res://player.gd").new()
+		var player_scene = preload("res://player.tscn")
+		_player = player_scene.instantiate()
+		gut.p("player instance created!")
+		add_child(_player)
+		_player._ready()
+		
+	func test_player_disapperars_on_collision():
+		_player._on_body_entered()
+		assert_false(_player.visible)
