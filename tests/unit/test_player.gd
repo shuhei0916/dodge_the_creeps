@@ -4,11 +4,20 @@ func test_passes():
 	assert_eq(1, 1)
 
 func test_player_moves():
+	# 準備 Arrange
 	# var player = preload("res://player.gd").new()
-	var player_scene = preload("res://player.tscn").instantiate()
-	player_scene._ready()
-	# 右方向への移動をテスト
+	var player_scene = preload("res://player.tscn")
+	var player = player_scene.instantiate()
+	add_child(player)
+	player._ready()
+	
+	# 実行 Act
 	Input.action_press("move_right")
-	player_scene._process(0.016)  # 16msのフレーム時間でシミュレーション
-	assert_true(player_scene.position.x > 0, "Player should move right")
+	player._process(0.016)  # 16msのフレーム時間でシミュレーション
+	
+	# 検証 Assertion
+	assert_true(player.position.x > 0, "Player should move right")
+
+	# 終了処理
 	Input.action_release("move_right")
+	player.queue_free()
