@@ -1,10 +1,12 @@
 extends Area2D
+signal hit
 
 @export var speed = 400
 var screen_size
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hide()
 	screen_size = get_viewport_rect().size
 
 
@@ -37,7 +39,6 @@ func _process(delta: float) -> void:
 	elif velocity.y != 0:
 		$AnimatedSprite2D.animation = "up"
 		$AnimatedSprite2D.flip_v = velocity.y > 0
-		
-		
-		
-		
+
+func _on_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

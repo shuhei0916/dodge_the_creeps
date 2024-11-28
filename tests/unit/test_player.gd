@@ -24,18 +24,7 @@ class TestPlayerMoves :
 		assert_true(_player.position.x > 0, "Player should move right")
 		gut.p("after: " + str(_player.position))
 		Input.action_release("move_right")
-
-	func test_player_stays_within_bounds():
-		#player.screen_size = Vector2(800, 600)  # 画面サイズをセット
-		gut.p("screen_size: " + str(_player.screen_size))
-		_player.position = Vector2(900, 1000)
-		gut.p("before: " + str(_player.position))
-		_player._process(0.016)
-		#assert_true(true)
-		gut.p("after: " + str(_player.position))
-		assert_true(_player.position.x <= 480 and _player.position.y <= 720, "Player should stay within screen bounds")
-
-
+		
 	# test_player_right_movesは通るのに、これは通らない
 	#func test_player_left_moves():
 		## 実行 Act
@@ -47,6 +36,19 @@ class TestPlayerMoves :
 		#gut.p("after: " + str(_player.position))
 		#assert_true(_player.position.x < 0, "Player should move left")
 		#Input.action_release("move_left")
+		
+	func test_player_stays_within_bounds():
+		#player.screen_size = Vector2(800, 600)  # 画面サイズをセット
+		gut.p("screen_size: " + str(_player.screen_size))
+		_player.position = Vector2(900, 1000)
+		gut.p("before: " + str(_player.position))
+		_player._process(0.016)
+		#assert_true(true)
+		gut.p("after: " + str(_player.position))
+		assert_true(_player.position.x <= 480 and _player.position.y <= 720, "Player should stay within screen bounds")
+
+	#func test_player_moves_diagonally():
+		#pass
 
 
 	func after_each():
