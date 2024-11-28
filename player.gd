@@ -8,6 +8,7 @@ func _ready() -> void:
 	screen_size = get_viewport_rect().size
 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var velocity = Vector2.ZERO # The Player's movement speed.
