@@ -1,5 +1,5 @@
 extends Area2D
-#signal hit
+signal hit
 
 @export var speed = 400
 var screen_size
@@ -8,7 +8,6 @@ var screen_size
 func _ready() -> void:
 	hide()
 	screen_size = get_viewport_rect().size
-
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,4 +40,12 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.flip_v = velocity.y > 0
 
 func _on_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+	hide()
+	hit.emit()
+	$CollisionShape2D.set_deferred("disabled", true)
+
+
+func start(pos):
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false

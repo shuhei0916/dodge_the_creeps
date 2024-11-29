@@ -74,5 +74,5 @@ class TestPlayerHit:
 		_player._ready()
 		
 	func test_player_disapperars_on_collision():
-		_player._on_body_entered()
+		_player._on_body_entered() # 
 		assert_false(_player.visible)
