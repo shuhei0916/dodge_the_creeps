@@ -6,8 +6,7 @@ signal start_game
 func show_message(text):
 	$Message.text = text
 	$Message.show()
-	$MessageTimer.start
-	
+	$MessageTimer.start()
 
 func show_game_over():
 	show_message("Game Over")
@@ -15,7 +14,7 @@ func show_game_over():
 	await $MessageTimer.timeout
 	
 	$Message.text = "Dodge the Creeps!"
-	$Messge.show()
+	$Message.show()
 	# Make a one-shot time and wait for it to finish.
 	await get_tree().create_timer(1.0).timeout
 	$StartButton.show()
