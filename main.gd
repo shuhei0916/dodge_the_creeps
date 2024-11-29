@@ -14,7 +14,13 @@ func game_over() -> void:
 	
 	$HUD.show_game_over()
 	
+	$Music.stop()
+	$DeathSound.play()
+	
 func new_game():
+	# グループ内の全てのノードに対し、名前付きの関数（ここではqueue_free)を呼び出す
+	get_tree().call_group("mobs", "queue_free")
+	
 	score = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
@@ -22,8 +28,7 @@ func new_game():
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
 	
-	# グループ内の全てのノードに対し、名前付きの関数（ここではqueue_free)を呼び出す
-	get_tree().call_group("mobs", "queue_free")
+	$Music.play()
 
 func _on_score_timer_timeout() -> void:
 	score += 1
@@ -53,7 +58,7 @@ func _on_mob_timer_timeout() -> void:
 	mob.rotation = direction
 	
 	# Choose the velocity for the mob.
-	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
+	var velocity = Vector2(randf_range(50.0, 150.0), 0.0)
 	mob.linear_velocity = velocity.rotated(direction)
 	
 	# Spawn the mob by adding it to the Main scene.
