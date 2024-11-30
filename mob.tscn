@@ -17,7 +17,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_a3t2u")
 }],
-"loop": false,
+"loop": true,
 "name": &"fly",
 "speed": 3.0
 }, {
@@ -48,7 +48,7 @@ animations = [{
 radius = 35.0
 height = 98.0
 
-[node name="Mob" type="RigidBody2D"]
+[node name="Mob" type="RigidBody2D" groups=["mobs"]]
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_q7xqi")
@@ -58,6 +58,7 @@ metadata/_edit_group_ = true
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_k26hs")
 animation = &"walk"
+frame_progress = 0.734706
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
